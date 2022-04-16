@@ -31,11 +31,11 @@ public class Workshop extends AbstractEvent{
     /**
      * This is the standard factory method for getting a Workshop object to achieve Flyweight
      * @pre name != null && location != null && date != null && pricePerPerson != null && numOfTickets != null && ws!= null
-     * @param name The concert name
-     * @param location The location of the concert
-     * @param date The date the concert is to be held
+     * @param name The Workshop name
+     * @param location The location of the Workshop
+     * @param date The date the Workshop is to be held
      * @param pricePerPerson    The ticket price per person
-     * @param numOfTickets  Total number of tickets the concert has sold
+     * @param numOfTickets  Total number of tickets the Workshop has sold
      * @param ws    The list of Workshop prerequisites
      * @return a Workshop object
      */
@@ -50,6 +50,14 @@ public class Workshop extends AbstractEvent{
     }
 
 
+    /**
+     *  This is the alternative factory method for getting a Workshop object
+     * @pre name != null && date != null && ws!= null
+     * @param name      The workshop name
+     * @param date      The date the workshop is to be held
+     * @param ws    The list of Workshop prerequisites
+     * @return a Workshop object
+     */
 
 
     public static Workshop getWorkshop(String name, LocalDate date, List<Workshop> ws){

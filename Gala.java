@@ -34,7 +34,7 @@ public class Gala extends AbstractEvent{
      * @param pricePerPerson    The ticket price per person
      * @param numOfTickets  Total number of tickets the gala has sold
      * @param vips      The VIP list we initially have
-     * @return a Concert object
+     * @return a Gala object
      */
     public static Gala getGala(String name, Location location,
                                      LocalDate date, Double pricePerPerson, Integer numOfTickets, List<VIP> vips){
@@ -50,14 +50,14 @@ public class Gala extends AbstractEvent{
     /**
      *  This is the alternative factory method for getting a Gala object
      * @pre name != null && date != null  && vips!= null
-     * @param name      The concert name
-     * @param date      The date the concert is to be held
-     * @param artist    The artist who is playing at the concert
+     * @param name      The Gala name
+     * @param date      The date the Gala is to be held
+     * @param artist    The artist who is playing at the Gala
      * @param vips      The VIP list we initially have
-     * @return a Concert object
+     * @return a Gala object
      */
 
-    public static Gala getConcert(String name, LocalDate date, String artist, List<VIP> vips){
+    public static Gala getGala(String name, LocalDate date, String artist, List<VIP> vips){
         assert name != null && date != null && artist != null && vips!= null;
         Gala g= new Gala(name, date, vips);
         Gala.galas.add(g);
