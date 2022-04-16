@@ -9,21 +9,20 @@ public class Screening extends AbstractEvent{
     private static final List<Screening> screenings = new ArrayList<Screening>();
 
 
-    private final Ratings rating;
+    private Optional<Ratings> rating;
 
     // Private constructors to achieve Flyweight
     private Screening(String name, Location location, LocalDate date,
                         Double pricePerPerson, Integer numOfTickets, Ratings rating) {
         super(name, location, date, pricePerPerson, numOfTickets);
         assert rating!= null;
-        this.rating= rating;
+        this.rating= Optional.of(rating);
     }
 
     //Alternative private constructor when the Event is Coming Soon
-    private Screening(String name, LocalDate date, Ratings rating) {
+    private Screening(String name, LocalDate date) {
         super(name, date);
-        assert rating!= null;
-        this.rating= rating;
+        this.rating= Optional.empty();
     }
 
     /**
@@ -58,7 +57,7 @@ public class Screening extends AbstractEvent{
 
     public static Screening getScreening(String name, LocalDate date, Ratings rating){
         assert name != null && date != null && rating!= null;
-        Screening s = new Screening(name, date, rating);
+        Screening s = new Screening(name, date);
         Screening.screenings.add(s);
         return s;
     }
@@ -80,5 +79,14 @@ public class Screening extends AbstractEvent{
             if(this.getName().equals(s.getName()) && s.getLocation().equals(Optional.of(loc))) return false;
         }
         return true;
+    }
+
+    //Getter and setter for the specific field rating
+    public Optional<Ratings> getRating(){
+        return this.rating;
+    }
+    public void setRating(Ratings rating){
+        assert rating!= null;
+        this.rating= Optional.of(rating);
     }
 }

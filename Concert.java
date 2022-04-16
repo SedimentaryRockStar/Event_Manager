@@ -9,7 +9,7 @@ public class Concert extends AbstractEvent{
     // An arraylist to contain all the concerts we have created to achieve Flyweight
     private static final List<Concert> concerts= new ArrayList<>();
 
-    private final String artist;
+    private  Optional<String> artist;
     private final List<VIP> aVips= new ArrayList<>();
 
 
@@ -18,15 +18,15 @@ public class Concert extends AbstractEvent{
                     Integer numOfTickets, String artist, List<VIP> vips) {
         super(name, location, date, pricePerPerson, numOfTickets);
         assert artist != null && vips!= null;
-        this.artist = artist;
+        this.artist = Optional.of(artist);
         aVips.addAll(vips); // Add all the input VIPS into the VIP list
     }
 
     //Alternative private constructor when the Event is Coming Soon
-    private Concert(String name, LocalDate date, String artist, List<VIP> vips) {
+    private Concert(String name, LocalDate date, List<VIP> vips) {
         super(name, date);
-        assert artist != null && vips!= null;
-        this.artist = artist;
+        assert vips!= null;
+        this.artist = Optional.empty();
         aVips.addAll(vips); // Add all the input VIPS into the VIP list
     }
 
@@ -64,15 +64,19 @@ public class Concert extends AbstractEvent{
 
     public static Concert getConcert(String name, LocalDate date, String artist, List<VIP> vips){
         assert name != null && date != null && artist != null && vips!= null;
-        Concert c= new Concert(name, date, artist, vips);
+        Concert c= new Concert(name, date, vips);
         Concert.concerts.add(c);
         return c;
     }
 
-    // Get the name of the artist who is playing at the concert
-    public String getArtist(){
-        assert this.artist!= null;
+    // Get and set the name of the artist who is playing at the concert
+    public Optional<String> getArtist(){
         return this.artist;
+    }
+
+    public void setArtist(String artist){
+        assert artist != null;
+        this.artist = Optional.of(artist);
     }
 
     /**
