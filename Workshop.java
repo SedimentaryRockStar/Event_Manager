@@ -54,9 +54,6 @@ public class Workshop extends AbstractEvent{
 
     public static Workshop getWorkshop(String name, LocalDate date, List<Workshop> ws){
         assert name != null && date != null && ws!= null;
-        for(Workshop w: Workshop.workshops){
-            if(w.getDate().equals(date) && w.getLocation().equals(Optional.empty())) return w;
-        }
         Workshop w= new Workshop(name, date, ws);
         Workshop.workshops.add(w);
         return w;

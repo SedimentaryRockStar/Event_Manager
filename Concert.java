@@ -64,10 +64,6 @@ public class Concert extends AbstractEvent{
 
     public static Concert getConcert(String name, LocalDate date, String artist, List<VIP> vips){
         assert name != null && date != null && artist != null && vips!= null;
-        for(Concert c : concerts){
-            if(c.getDate().equals(date) && c.getLocation().equals(Optional.empty())) return c;
-            // We could assume
-        }
         Concert c= new Concert(name, date, artist, vips);
         Concert.concerts.add(c);
         return c;
@@ -90,6 +86,12 @@ public class Concert extends AbstractEvent{
         this.aVips.add(v);
     }
 
+
+    /**
+     * Remove a VIP at index i from the VIP list
+     * @pre index should be within the range of the VIP list    i>= 0 && i< this.aVips.size()
+     * @param i At the index we want to remove
+     */
     public void deleteVip(int i){
         assert i>= 0 && i< this.aVips.size();
         this.aVips.remove(i);
