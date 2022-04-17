@@ -18,6 +18,8 @@ public class Festival extends AbstractEvent{
         this.events.addAll(events); // This could ensure that the events list cannot be changed
     }
 
+
+    //Factory getter method for the Festival
     public static Festival getFestival(String name, List<Event> events) {
         assert name != null && events != null;
 
