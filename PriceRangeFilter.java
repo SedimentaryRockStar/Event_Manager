@@ -1,4 +1,4 @@
-public class PriceRangeFilter implements Filter{
+public class PriceRangeFilter implements Filter {
 
     private final double l;
     private final double r;

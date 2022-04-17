@@ -1,4 +1,4 @@
-public class LocationFilter implements Filter{
+public class LocationFilter implements Filter {
 
     private final Location loc;
 
@@ -11,7 +11,7 @@ public class LocationFilter implements Filter{
     /**
      * Filter strategy based on the location
      * @param e The event to be checked on
-     * @return  The result that whether the location of the event is present and falls into the price range
+     * @return  The result that whether the location of the event is present and is at the same location
      */
     @Override
     public boolean filter(Event e) {
