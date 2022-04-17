@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class FilterResult {
@@ -21,8 +22,9 @@ public class FilterResult {
         return new FilterResult(filteredEvents);
     }
 
-    public List<Event> getFilteredEvents() {
+    //Get the event iterator for the profit calculation
+    public Iterator<Event> getFilteredEvents() {
         assert aFilteredEvents!= null;
-        return List.copyOf(this.aFilteredEvents);
+        return this.aFilteredEvents.iterator();
     }
 }

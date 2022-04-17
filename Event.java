@@ -13,4 +13,9 @@ public interface Event {
     Optional<Integer> getNumTickets();
 
 
+    void accept(Visitor v);
+
+    double getProfit();
+
+
 }

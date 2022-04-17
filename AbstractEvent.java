@@ -57,25 +57,25 @@ public abstract class AbstractEvent implements Event{
     /*
     The concrete series of getter methods
      */
-
+    @Override
     public String getName(){
         assert name!= null;
         return this.name;
     }
-
+    @Override
     public LocalDate getDate(){
         assert date!= null;
         return this.date;
     }
-
+    @Override
     public Optional<Location> getLocation(){
         return this.location;
     }
-
+    @Override
     public Optional<Double> getPrice(){
         return this.pricePerPerson;
     }
-
+    @Override
     public Optional<Integer> getNumTickets(){
         return this.numOfTickets;
     }
@@ -100,8 +100,16 @@ public abstract class AbstractEvent implements Event{
         this.location = Optional.of(loc);
     }
 
-
     public abstract boolean checkLocValid(Location loc);
+
+    @Override
+    public abstract void accept(Visitor v);
+
+    @Override
+    public double getProfit() {
+        return
+    }
+
 
     /**
      *
