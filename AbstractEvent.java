@@ -105,9 +105,12 @@ public abstract class AbstractEvent implements Event{
     @Override
     public abstract void accept(Visitor v);
 
+
+    // Profit calculator for Concrete events
     @Override
     public double getProfit() {
-        return
+        return (this.numOfTickets.isPresent() && this.pricePerPerson.isPresent())?
+                this.numOfTickets.get() * this.pricePerPerson.get(): 0;
     }
 
 

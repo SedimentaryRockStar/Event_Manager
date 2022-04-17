@@ -20,9 +20,10 @@ public class Screening extends AbstractEvent{
     }
 
     //Alternative private constructor when the Event is Coming Soon
-    private Screening(String name, LocalDate date) {
+    private Screening(String name, LocalDate date, Ratings rating) {
         super(name, date);
-        this.rating= Optional.empty();
+        assert rating!= null;
+        this.rating= Optional.of(rating);
     }
 
     /**
@@ -57,7 +58,7 @@ public class Screening extends AbstractEvent{
 
     public static Screening getScreening(String name, LocalDate date, Ratings rating){
         assert name != null && date != null && rating!= null;
-        Screening s = new Screening(name, date);
+        Screening s = new Screening(name, date, rating);
         Screening.screenings.add(s);
         return s;
     }
@@ -79,6 +80,15 @@ public class Screening extends AbstractEvent{
             if(this.getName().equals(s.getName()) && s.getLocation().equals(Optional.of(loc))) return false;
         }
         return true;
+    }
+
+    /**
+     * Accept the visitor
+     * @param v Visitor
+     */
+    @Override
+    public void accept(Visitor v) {
+        v.visitScreening(this);
     }
 
     //Getter and setter for the specific field rating

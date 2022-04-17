@@ -125,6 +125,14 @@ public class Concert extends AbstractEvent{
         return true;
     }
 
+    /**
+     * Accept the Visitor
+     * @param v     Visitor
+     */
+    @Override
+    public void accept(Visitor v) {
+        v.visitConcert(this);
+    }
 
 
     public static void main(String[] args){

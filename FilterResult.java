@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class FilterResult {
+public class FilterResult implements Element{
 
     private final List<Event> aFilteredEvents;
 
@@ -26,5 +26,14 @@ public class FilterResult {
     public Iterator<Event> getFilteredEvents() {
         assert aFilteredEvents!= null;
         return this.aFilteredEvents.iterator();
+    }
+
+    /**
+     * Accept the visitor
+     * @param v Visitor
+     */
+    @Override
+    public void acceptVisitor(Visitor v) {
+        v.visitFilteredResult(this);
     }
 }

@@ -81,6 +81,15 @@ public class Gala extends AbstractEvent{
         return true;
     }
 
+    /**
+     * Accept the visitor
+     * @param v Visitor
+     */
+    @Override
+    public void accept(Visitor v) {
+        v.visitGala(this);
+    }
+
 
     /**
      * Add a single VIP to the VIP list

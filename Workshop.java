@@ -83,7 +83,15 @@ public class Workshop extends AbstractEvent{
         return true;
     }
 
+    /**
+     * Accept the visitor
+     * @param v Visitor
+     */
+    @Override
+    public void accept(Visitor v) {
+        v.visitWorkshop(this);
 
+    }
 
 
 }

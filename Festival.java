@@ -19,6 +19,8 @@ public class Festival extends AbstractEvent{
     }
 
 
+    // On Ed the TA said we could assume a Festival does not have all its Events to be Coming Soon
+
     //Factory getter method for the Festival
     public static Festival getFestival(String name, List<Event> events) {
         assert name != null && events != null;
@@ -84,8 +86,17 @@ public class Festival extends AbstractEvent{
         return false;
     }
 
+    /**
+     * Accept the visitor
+     * @param v Visitor to use
+     */
+    @Override
+    public void accept(Visitor v) {
+        v.visitFestival(this);
+    }
 
-    // On Ed the TA said we could assume a Festival does not have all its Events to be Coming Soon
+
+
 
 
 

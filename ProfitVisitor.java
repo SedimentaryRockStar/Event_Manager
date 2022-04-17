@@ -10,6 +10,7 @@ public class ProfitVisitor implements Visitor{
     private final double screening;
 
     public ProfitVisitor(double concert, double workshop, double gala, double screening) {
+        assert concert>= 0 && workshop>= 0 && gala>= 0 && screening>= 0;
         this.concert = concert;
         this.workshop = workshop;
         this.gala = gala;
@@ -62,10 +63,19 @@ public class ProfitVisitor implements Visitor{
      */
     @Override
     public void visitScreening(Screening s) {
-
-
+        profits+= screening* s.getProfit();
     }
 
+    /**
+     * Calculate the profit of a certain festival
+     * @param f The festival to be calculated on
+     */
+    @Override
+    public void visitFestival(Festival f) {
+        for(Event e: f.getEvent()){
+            e.accept(this);
+        }
+    }
 
 
     public double getProfit() {
