@@ -12,10 +12,16 @@ public interface Event {
     Optional<Double> getPrice();
     Optional<Integer> getNumTickets();
 
-
     void accept(Visitor v);
 
     double getProfit();
 
+
+    void setPricePerPerson(double pricePerPerson);
+
+    void setNumOfTickets(int numOfTickets);
+
+
+    void setLocation(Location loc);
 
 }

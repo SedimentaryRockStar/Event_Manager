@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /*
 Controller to manage events hosted on EventBrite.
@@ -62,9 +63,64 @@ public class EventManagement {
     /*
     Method to host a new Workshop event
      */
-    public void addWorkshopEvent(){
-
+    public void addWorkshopEvent(String name, Location location, LocalDate date,
+                                 Double pricePerPerson, Integer numOfTickets, List<Workshop> ws){
+        assert name != null && location != null && date != null
+                && pricePerPerson != null && numOfTickets != null && ws!= null;
+        aHostedEvents.add(Workshop.getWorkshop(name, location, date, pricePerPerson, numOfTickets, ws));
     }
+
+    public void addWorkshopEvent(String name, LocalDate date, List<Workshop> ws){
+        assert name != null &&  date != null && ws!= null;
+        aHostedEvents.add(Workshop.getWorkshop(name, date, ws));
+    }
+
+    // Getter Method and Setter methods
+
+    public String getName(int i){
+        assert i>= 0 && i< this.aHostedEvents.size();
+        return this.aHostedEvents.get(i).getName();
+    }
+
+    public LocalDate getDate(int i){
+        assert i>= 0 && i< this.aHostedEvents.size();
+        return this.aHostedEvents.get(i).getDate();
+    }
+
+    public Optional<Location> getLocation(int i){
+        assert i>= 0 && i< this.aHostedEvents.size();
+        return this.aHostedEvents.get(i).getLocation();
+    }
+
+    public Optional<Double> getPrice(int i){
+        assert i>= 0 && i< this.aHostedEvents.size();
+        return this.aHostedEvents.get(i).getPrice();
+    }
+
+    public Optional<Integer> getNumTickets(int i){
+        assert i>= 0 && i< this.aHostedEvents.size();
+        return this.aHostedEvents.get(i).getNumTickets();
+    }
+
+    //Setter methods for fields
+    public void setPricePerPerson(int i, double pricePerPerson){
+        assert i>= 0 && i< this.aHostedEvents.size();
+        this.aHostedEvents.get(i).setPricePerPerson(pricePerPerson);
+    }
+
+    public void setNumTickets(int i, int numTickets){
+        assert i>= 0 && i< this.aHostedEvents.size();
+        this.aHostedEvents.get(i).setNumOfTickets(numTickets);
+    }
+
+    public void setLocation(int i, Location location){
+        assert i>= 0 && i< this.aHostedEvents.size() && location!= null;
+        this.aHostedEvents.get(i).setLocation(location);
+    }
+
+
+
+
 
     /*
     Return the list of hosted events on EventBrite.
